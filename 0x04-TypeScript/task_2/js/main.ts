@@ -45,3 +45,23 @@ function createEmployee(salary: number | string) {
     return new Director();
   }
 }
+
+// interface Employee {
+//   workFromHome(): string;
+//   getCoffeeBreak(): string;
+// }
+
+function isDirector(employee: unknown): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+function isTeacher(employee: unknown): employee is Teacher {
+  return (employee as Teacher).workTeacherTasks !== undefined;
+}
+function executeWork(employee: unknown) {
+  if (isDirector(employee)) {
+    console.log(employee.workDirectorTasks());
+  }
+  if (isTeacher(employee)) {
+    console.log(employee.workTeacherTasks());
+  }
+}
